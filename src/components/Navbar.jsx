@@ -124,14 +124,14 @@ const Navbar = () => {
         <NavLink to={'/'}>Home</NavLink>
       </li>
       <li>
-        <a>Products</a>
-      </li>
-      <li>
         <a>Categories</a>
       </li>
       <li>
-        <a>About Us</a>
+        <NavLink to={'/aboutUs'}>
+            About Us
+        </NavLink>
       </li>
+        
       <li>
         <NavLink to={'/contactUs'}>
             Contact
@@ -140,6 +140,32 @@ const Navbar = () => {
       <li>
         <NavLink to={'/ContactUsAdmin'}>
         ContactUsAdmin
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to={'/login'}>
+        login
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to={'/register'}>
+        register
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to={'/addVegetableProduct'}>
+        addVegetableProduct
+        </NavLink>
+      </li>
+      
+      <li>
+        <NavLink to={'/products'}>
+        Products
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to={'/adminDashboard'}>
+        Admin Dashboard
         </NavLink>
       </li>
 

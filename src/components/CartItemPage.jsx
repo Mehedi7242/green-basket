@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const CartItemPage = () => {
   const [subscription, setSubscription] = useState("7"); // Default to 7 days
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
 
   const cartItems = [
     {
@@ -34,6 +38,18 @@ const CartItemPage = () => {
 
   const handleSubscriptionChange = (e) => {
     setSubscription(e.target.value);
+  };
+
+  const handleProceedToCheckout = () => {
+    setShowPaymentModal(true);
+  };
+
+  const handleBkashPayment = () => {
+    setShowPaymentModal(false);
+    toast.success("Payment successful via Bkash!", {
+      position: toast.POSITION.TOP_CENTER,
+      autoClose: 2000,
+    });
   };
 
   return (
@@ -72,7 +88,9 @@ const CartItemPage = () => {
             </div>
 
             {/* Total Price for this item */}
-            <div className="text-lg font-semibold">${(item.price * item.quantity).toFixed(2)}</div>
+            <div className="text-lg font-semibold">
+              ${(item.price * item.quantity).toFixed(2)}
+            </div>
           </div>
         ))}
       </div>
@@ -123,8 +141,44 @@ const CartItemPage = () => {
       {/* Cart Summary */}
       <div className="mt-6 flex justify-between items-center border-t pt-4">
         <p className="text-xl font-semibold">Total: ${totalAmount.toFixed(2)}</p>
-        <button className="btn btn-primary px-8 py-2">Proceed to Checkout</button>
+        <button
+          className="btn btn-primary px-8 py-2"
+          onClick={handleProceedToCheckout}
+        >
+          Proceed to Checkout
+        </button>
       </div>
+
+      {/* Payment Modal */}
+      {showPaymentModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h2 className="text-xl font-semibold mb-4 text-center">
+              Complete Payment
+            </h2>
+            <p className="mb-6 text-gray-700 text-center">
+              Please proceed with your payment via Bkash to complete the order.
+            </p>
+            <div className="flex justify-between">
+              <button
+                className="btn btn-error"
+                onClick={() => setShowPaymentModal(false)}
+              >
+                Cancel
+              </button>
+              <button
+                className="btn btn-success"
+                onClick={handleBkashPayment}
+              >
+                Pay with Bkash
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Toast Container */}
+      <ToastContainer />
     </div>
   );
 };
