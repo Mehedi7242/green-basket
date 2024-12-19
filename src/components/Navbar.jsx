@@ -1,22 +1,33 @@
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router";
 
 const Navbar = () => {
-    const navigate = useNavigate()
-    const handleCart = ()=>{
-        navigate('/cartPage')
-    }
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const navigate = useNavigate();
+
+  const handleCart = () => {
+    navigate("/cartPage");
+  };
+
+  const toggleDropdown = (dropdownName) => {
+    setActiveDropdown((prev) => (prev === dropdownName ? null : dropdownName));
+  };
+
+  const closeDropdown = () => {
+    setActiveDropdown(null);
+  };
+
+  const closeDrawer = () => {
+    document.getElementById("my-drawer").checked = false;
+  };
 
   return (
     <div className="drawer">
-      {/* Drawer Toggle */}
+
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-
-      {/* Main Content */}
       <div className="drawer-content">
-        {/* Navbar */}
-        <div className="navbar  bg-base-100 shadow-md">
+        <div className="navbar bg-base-100 shadow-md">
           <div className="flex-none">
-
             <label htmlFor="my-drawer" className="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -37,12 +48,16 @@ const Navbar = () => {
             <a className="btn btn-ghost text-xl">Green Basket</a>
           </div>
           <div className="flex-none">
-            {/* Cart Dropdown */}
-            <div  className="dropdown dropdown-end">
+            <div
+              className={`dropdown dropdown-end ${
+                activeDropdown === "cart" ? "dropdown-open" : ""
+              }`}
+            >
               <div
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle"
+                onClick={() => toggleDropdown("cart")}
               >
                 <div className="indicator">
                   <svg
@@ -65,25 +80,32 @@ const Navbar = () => {
               <div
                 tabIndex={0}
                 className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
+                onClick={closeDropdown}
               >
                 <div className="card-body">
                   <span className="text-lg font-bold">8 Items</span>
                   <span className="text-info">Subtotal: $999</span>
                   <div className="card-actions">
-                    <button onClick={handleCart} className="btn btn-primary btn-block">
+                    <button
+                      onClick={handleCart}
+                      className="btn btn-primary btn-block"
+                    >
                       View cart
                     </button>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Profile Dropdown */}
-            <div className="dropdown dropdown-end">
+            <div
+              className={`dropdown dropdown-end ${
+                activeDropdown === "profile" ? "dropdown-open" : ""
+              }`}
+            >
               <div
                 tabIndex={0}
                 role="button"
                 className="btn btn-ghost btn-circle avatar"
+                onClick={() => toggleDropdown("profile")}
               >
                 <div className="w-10 rounded-full">
                   <img
@@ -95,6 +117,7 @@ const Navbar = () => {
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                onClick={closeDropdown}
               >
                 <li>
                   <a className="justify-between">
@@ -112,66 +135,61 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        
       </div>
-
-      {/* Drawer Sidebar */}
       <div className="drawer-side">
-    <label htmlFor="my-drawer" className="drawer-overlay lg:hidden"></label>
-    <ul className="menu p-4 w-64 bg-base-200 text-base-content">
-      <li className="text-lg font-semibold mb-2">Menu</li>
-      <li>
-        <NavLink to={'/'}>Home</NavLink>
-      </li>
-      <li>
-        <a>Categories</a>
-      </li>
-      <li>
-        <NavLink to={'/aboutUs'}>
-            About Us
-        </NavLink>
-      </li>
-        
-      <li>
-        <NavLink to={'/contactUs'}>
-            Contact
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={'/ContactUsAdmin'}>
-        ContactUsAdmin
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={'/login'}>
-        login
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={'/register'}>
-        register
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={'/addVegetableProduct'}>
-        addVegetableProduct
-        </NavLink>
-      </li>
-      
-      <li>
-        <NavLink to={'/products'}>
-        Products
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to={'/adminDashboard'}>
-        Admin Dashboard
-        </NavLink>
-      </li>
-
-    </ul>
-  </div>
-
+        <label htmlFor="my-drawer" className="drawer-overlay lg:hidden"></label>
+        <ul className="menu p-4 w-64 bg-base-200 text-base-content">
+          <li className="text-lg font-semibold mb-2">Menu</li>
+          <li>
+            <NavLink to="/" onClick={closeDrawer}>
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <a onClick={closeDrawer}>Categories</a>
+          </li>
+          <li>
+            <NavLink to="/aboutUs" onClick={closeDrawer}>
+              About Us
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/contactUs" onClick={closeDrawer}>
+              Contact
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/ContactUsAdmin" onClick={closeDrawer}>
+              ContactUsAdmin
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/login" onClick={closeDrawer}>
+              Login
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/register" onClick={closeDrawer}>
+              Register
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/addVegetableProduct" onClick={closeDrawer}>
+              AddVegetableProduct
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/products" onClick={closeDrawer}>
+              Products
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/adminDashboard" onClick={closeDrawer}>
+              Admin Dashboard
+            </NavLink>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
