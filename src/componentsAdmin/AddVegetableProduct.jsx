@@ -28,7 +28,7 @@ const AddVegetableProduct = () => {
     console.log("Submitting product:", formData); // Log the form data
 
     try {
-      const response = await fetch("http://localhost:5000/products", {
+      const response = await fetch("https://simple-curd-server-tau.vercel.app/products", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

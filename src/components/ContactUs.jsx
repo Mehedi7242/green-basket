@@ -15,7 +15,7 @@ const ContactUs = () => {
     console.log(user);
     form.reset();
 
-    fetch(`http://localhost:5000/users`, {
+    fetch(`https://simple-curd-server-tau.vercel.app/users`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

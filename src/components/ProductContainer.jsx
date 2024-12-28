@@ -9,7 +9,7 @@ const ProductContainer = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:5000/products"); // API endpoint
+        const response = await fetch("https://simple-curd-server-tau.vercel.app/products"); // API endpoint
         const data = await response.json();
         setProducts(data); // Store the fetched data in state
       } catch (error) {
