@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 const ProductCard = ({ product }) => {
@@ -24,14 +25,24 @@ const ProductCard = ({ product }) => {
       <div className="mt-4">
         <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
         <p className="text-gray-600 text-sm mt-2">{description}</p>
-        <div className="mt-3 flex justify-between items-center">
-          <span className="text-green-600 font-bold">{price}</span>
-          <button
+        <h2 className="text-green-600 font-bold p-2">{price} tk</h2>
+        <div className="mt-3 flex flex-col items-center">
+          
+          <div className="flex space-x-2">
+          <Link
             onClick={handleAddToCart}
             className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
           >
             Add to Cart
-          </button>
+          </Link>
+          <Link
+            onClick={handleAddToCart}
+            className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition"
+          >
+             Details
+          </Link>
+          </div>
+          
         </div>
       </div>
     </div>

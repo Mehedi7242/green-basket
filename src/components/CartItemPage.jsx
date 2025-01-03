@@ -6,6 +6,13 @@ import "react-toastify/dist/ReactToastify.css";
 const CartItemPage = () => {
   const [subscription, setSubscription] = useState("7"); // Default to 7 days
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [customer, setCustomer] = useState({
+    name: "",
+    email: "",
+    address: "",
+    city: "",
+    zip: "",
+  });
 
   const cartItems = [
     {
@@ -40,7 +47,19 @@ const CartItemPage = () => {
     setSubscription(e.target.value);
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setCustomer((prevCustomer) => ({
+      ...prevCustomer,
+      [name]: value,
+    }));
+  };
+
   const handleProceedToCheckout = () => {
+    if (!customer.name || !customer.email || !customer.address || !customer.city || !customer.zip) {
+      toast.error("Please fill in all customer details and address!");
+      return;
+    }
     setShowPaymentModal(true);
   };
 
@@ -135,6 +154,53 @@ const CartItemPage = () => {
             />
             <label htmlFor="monthly">Every 30 Days</label>
           </div>
+        </div>
+      </div>
+
+      {/* Customer Information */}
+      <div className="mt-6 p-4 border rounded-lg shadow-md bg-base-100">
+        <h2 className="text-xl font-semibold mb-4">Customer Information</h2>
+        <div className="space-y-4">
+          <input
+            type="text"
+            name="name"
+            value={customer.name}
+            onChange={handleInputChange}
+            placeholder="Full Name"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="email"
+            name="email"
+            value={customer.email}
+            onChange={handleInputChange}
+            placeholder="Email Address"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="address"
+            value={customer.address}
+            onChange={handleInputChange}
+            placeholder="Street Address"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="city"
+            value={customer.city}
+            onChange={handleInputChange}
+            placeholder="City"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="zip"
+            value={customer.zip}
+            onChange={handleInputChange}
+            placeholder="Zip Code"
+            className="input input-bordered w-full"
+          />
         </div>
       </div>
 

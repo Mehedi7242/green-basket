@@ -6,12 +6,17 @@ const AddVegetableProduct = () => {
   const [formData, setFormData] = useState({
     name: "",
     price: "",
+    discountPrice: "", // Optional
     description: "",
     category: "",
     image: "",
     weight: "",
     stock: "",
     supplier: "",
+    expirationDate: "", // Optional
+    tags: "", // Optional, comma-separated string
+    status: "Active", // Optional
+    sku: "", // Optional
   });
 
   const handleChange = (e) => {
@@ -53,12 +58,17 @@ const AddVegetableProduct = () => {
         setFormData({
           name: "",
           price: "",
+          discountPrice: "",
           description: "",
           category: "",
           image: "",
           weight: "",
           stock: "",
           supplier: "",
+          expirationDate: "",
+          tags: "",
+          status: "Active",
+          sku: "",
         });
       } else {
         Swal.fire({
@@ -130,6 +140,23 @@ const AddVegetableProduct = () => {
             className="w-full mt-1 p-2 border rounded-md focus:ring-green-500 focus:border-green-500"
             min="0"
             required
+          />
+        </div>
+
+        {/* Discount Price */}
+        <div>
+          <label htmlFor="discountPrice" className="block font-medium text-gray-700">
+            Discount Price (Optional)
+          </label>
+          <input
+            type="number"
+            id="discountPrice"
+            name="discountPrice"
+            value={formData.discountPrice}
+            onChange={handleChange}
+            placeholder="Enter discount price"
+            className="w-full mt-1 p-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+            min="0"
           />
         </div>
 
@@ -237,16 +264,78 @@ const AddVegetableProduct = () => {
           />
         </div>
 
+        {/* Expiration Date */}
+        <div>
+          <label htmlFor="expirationDate" className="block font-medium text-gray-700">
+            Expiration Date (Optional)
+          </label>
+          <input
+            type="date"
+            id="expirationDate"
+            name="expirationDate"
+            value={formData.expirationDate}
+            onChange={handleChange}
+            className="w-full mt-1 p-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+
+        {/* Tags */}
+        <div>
+          <label htmlFor="tags" className="block font-medium text-gray-700">
+            Tags (Optional, comma-separated)
+          </label>
+          <input
+            type="text"
+            id="tags"
+            name="tags"
+            value={formData.tags}
+            onChange={handleChange}
+            placeholder="e.g., organic, fresh"
+            className="w-full mt-1 p-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+
+        {/* Status */}
+        <div>
+          <label htmlFor="status" className="block font-medium text-gray-700">
+            Status
+          </label>
+          <select
+            id="status"
+            name="status"
+            value={formData.status}
+            onChange={handleChange}
+            className="w-full mt-1 p-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+          >
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+          </select>
+        </div>
+
+        {/* SKU */}
+        <div>
+          <label htmlFor="sku" className="block font-medium text-gray-700">
+            SKU (Optional)
+          </label>
+          <input
+            type="text"
+            id="sku"
+            name="sku"
+            value={formData.sku}
+            onChange={handleChange}
+            placeholder="Enter SKU"
+            className="w-full mt-1 p-2 border rounded-md focus:ring-green-500 focus:border-green-500"
+          />
+        </div>
+
         {/* Submit Button */}
         <div className="text-center">
-          <motion.button
+          <button
             type="submit"
-            className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md shadow-sm"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 focus:ring-2 focus:ring-green-500 focus:outline-none"
           >
             Add Product
-          </motion.button>
+          </button>
         </div>
       </motion.form>
     </div>

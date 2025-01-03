@@ -69,10 +69,10 @@ const ProductCategory = () => {
   return (
     <section className="py-8 bg-gray-100">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
+        <h2 className="text-2xl font-bold text-center mb-6 text-gray-800">
           Product Categories
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
           {categories.map((category) => (
             <NavLink
               key={category.id}
@@ -86,11 +86,9 @@ const ProductCategory = () => {
               <img
                 src={category.image}
                 alt={category.name}
-                className="w-24 h-24 object-cover rounded-full mb-3"
+                className="w-20 h-20 object-cover rounded-full mb-3"
               />
-              <h3 className="text-lg font-semibold text-gray-800">
-                {category.name}
-              </h3>
+              <h3 className="text-md font-semibold text-gray-800">{category.name}</h3>
             </NavLink>
           ))}
         </div>

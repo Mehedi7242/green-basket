@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 
 const images = [
-  "https://t3.ftcdn.net/jpg/01/47/51/60/240_F_147516063_hCXI8VUIdBYud0B0hhS3Yo5CFTT1a4g8.jpg",
+  "https://t4.ftcdn.net/jpg/10/61/61/07/240_F_1061610744_IvIeHDIZmFx3x8gsJfmf6bno7CxPg2L3.jpg",
   "https://t4.ftcdn.net/jpg/01/91/27/77/240_F_191277716_tRLBK7L3YqmILp2MOxYjbrrkGw1v50Ho.jpg",
-  "https://t3.ftcdn.net/jpg/03/95/57/94/240_F_395579460_HZNM4cdj0GM86YbvqU9VxVPbilYhnxWv.jpg",
+  "https://cdn.pixabay.com/photo/2017/07/20/09/24/white-cabbage-2521700_960_720.jpg",
 ];
 
 const Banner = () => {

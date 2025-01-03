@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ProductCard from "./ProductCard"; // Import the ProductCard component
-
+import Marquee from "react-fast-marquee";
 const ProductContainer = () => {
   const [products, setProducts] = useState([]); // State to store fetched products
   const [loading, setLoading] = useState(true); // State for loading status
@@ -32,6 +32,11 @@ const ProductContainer = () => {
 
   return (
     <section className="py-8 bg-gray-100">
+        <div className="mb-6">
+          <Marquee gradientColor="false" speed={30}>
+            Discover our premium selection of organic vegetables, including tomatoes, carrots, broccoli, spinach, and more! Healthy, fresh, and sustainable.
+          </Marquee>
+        </div>
       <div className="container mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
           Our Products

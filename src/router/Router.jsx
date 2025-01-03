@@ -15,6 +15,7 @@ import Products from './../componentsAdmin/Products';
 import AdminDashboard from './../componentsAdmin/AdminDashboard';
 import AboutUs from "../components/AboutUs";
 import ComboSelector from "../components/ComboSelector";
+import UserProfilePage from "../components/UserProfilePage";
 
 
 
@@ -27,8 +28,10 @@ const Router = () => {
         <Route path="cartPage" element={<CartItemPage />} />
         <Route path="contactUs" element={<ContactUs />} /> 
         <Route path="aboutUs" element={<AboutUs />} />
+        <Route path="userProfilePage" element={<UserProfilePage />} />
         <Route path="comboSelector " element={<ComboSelector />} />
         <Route path="*" element={<h2>Error: Page Not Found</h2>} />
+        
       </Route>
 
       <Route  element={<AuthPage />}>

@@ -9,7 +9,7 @@ const GroceryComboSelector = () => {
     {
       id: 1,
       name: "Vegetable Combo",
-      image: "https://via.placeholder.com/200x150?text=Vegetable+Combo",
+      image: "https://media.istockphoto.com/id/509372476/photo/variety-of-fresh-vegetables.jpg?s=612x612&w=0&k=20&c=K3i_zV7JpgSw1_zgDlH1XYIABKAD-epaGgPv87VLYwc=",
       items: [
         { name: "Tomatoes", quantity: "2kg", price: 4 },
         { name: "Broccoli", quantity: "1kg", price: 3.5 },
@@ -19,7 +19,7 @@ const GroceryComboSelector = () => {
     {
       id: 2,
       name: "Fruit Combo",
-      image: "https://via.placeholder.com/200x150?text=Fruit+Combo",
+      image: "https://media.istockphoto.com/id/160356158/photo/fruits-and-veggies-in-wood-box-with-white-backdrop.jpg?s=612x612&w=0&k=20&c=WMWJuSBYbXtk7gfGCb3FkI2Eycd_2TkwQv8W34rUAQY=",
       items: [
         { name: "Apples", quantity: "2kg", price: 5 },
         { name: "Bananas", quantity: "1.5kg", price: 2.5 },
@@ -29,7 +29,7 @@ const GroceryComboSelector = () => {
     {
       id: 3,
       name: "Grocery Essentials Combo",
-      image: "https://via.placeholder.com/200x150?text=Grocery+Combo",
+      image: "https://media.istockphoto.com/id/160356158/photo/fruits-and-veggies-in-wood-box-with-white-backdrop.jpg?s=612x612&w=0&k=20&c=WMWJuSBYbXtk7gfGCb3FkI2Eycd_2TkwQv8W34rUAQY=",
       items: [
         { name: "Rice", quantity: "5kg", price: 10 },
         { name: "Lentils", quantity: "2kg", price: 6 },
