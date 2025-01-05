@@ -28,7 +28,7 @@ const AdminDashboard = () => {
   // Handle delete product
   const handleDeleteProduct = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/products/${id}`, {
+      const response = await fetch(`https://simple-curd-server-tau.vercel.app/products/${id}`, {
         method: "DELETE",
       });
 

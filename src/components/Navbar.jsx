@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
+import { AuthContext } from './../provider/AuthProvider';
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, signOutUser } = useContext(AuthContext);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const navigate = useNavigate();
 
-  const handleCart = () => {
-    navigate("/cartPage");
+  const handleLogOut = () => {
+    signOutUser()
+      .then(() => {
+        Swal.fire({
+          title: "Successfully logged out",
+          text: "Goodbye!",
+          icon: "success",
+        });
+        navigate("/signIn");
+      })
+      .catch((error) => console.log("Log out failed", error));
   };
 
   const toggleDropdown = (dropdownName) => {
@@ -23,10 +35,10 @@ const Navbar = () => {
 
   return (
     <div className="drawer">
-
       <input id="my-drawer" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content">
         <div className="navbar bg-base-100 shadow-md">
+          {/* Hamburger menu for mobile */}
           <div className="flex-none">
             <label htmlFor="my-drawer" className="btn btn-square btn-ghost">
               <svg
@@ -39,63 +51,18 @@ const Navbar = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
+                  d="M4 6h16M4 12h8m-8 6h16"
                 ></path>
               </svg>
             </label>
           </div>
+          {/* Brand name */}
           <div className="flex-1">
             <a className="btn btn-ghost text-xl">Green Basket</a>
           </div>
+          {/* User controls */}
           <div className="flex-none">
-            <div
-              className={`dropdown dropdown-end ${
-                activeDropdown === "cart" ? "dropdown-open" : ""
-              }`}
-            >
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost btn-circle"
-                onClick={() => toggleDropdown("cart")}
-              >
-                <div className="indicator">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                  <span className="badge badge-sm indicator-item">8</span>
-                </div>
-              </div>
-              <div
-                tabIndex={0}
-                className="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow"
-                onClick={closeDropdown}
-              >
-                <div className="card-body">
-                  <span className="text-lg font-bold">8 Items</span>
-                  <span className="text-info">Subtotal: $999</span>
-                  <div className="card-actions">
-                    <button
-                      onClick={handleCart}
-                      className="btn btn-primary btn-block"
-                    >
-                      View cart
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Profile Dropdown */}
             <div
               className={`dropdown dropdown-end ${
                 activeDropdown === "profile" ? "dropdown-open" : ""
@@ -114,28 +81,43 @@ const Navbar = () => {
                   />
                 </div>
               </div>
+              <h1>{user?.email}</h1>
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                 onClick={closeDropdown}
               >
-                <li>
-                  <Link to={'/userProfilePage'} className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </Link>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
+                {user ? (
+                  <>
+                    <li>
+                      <Link to="/userProfilePage" className="justify-between">
+                        Profile
+                        <span className="badge">New</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <a>Settings</a>
+                    </li>
+                    <li>
+                      <button onClick={handleLogOut}>Logout</button>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <NavLink to="/login">Sign In</NavLink>
+                    </li>
+                    <li>
+                      <NavLink to="/register">Register</NavLink>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
           </div>
         </div>
       </div>
+      {/* Sidebar menu */}
       <div className="drawer-side">
         <label htmlFor="my-drawer" className="drawer-overlay lg:hidden"></label>
         <ul className="menu p-4 w-64 bg-base-200 text-base-content">
@@ -144,9 +126,6 @@ const Navbar = () => {
             <NavLink to="/" onClick={closeDrawer}>
               Home
             </NavLink>
-          </li>
-          <li>
-            <a onClick={closeDrawer}>Categories</a>
           </li>
           <li>
             <NavLink to="/aboutUs" onClick={closeDrawer}>
@@ -158,36 +137,39 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/ContactUsAdmin" onClick={closeDrawer}>
-              ContactUsAdmin
-            </NavLink>
-          </li>
+
+          {
+            user ?
+            
+            <>
+            <li>
+              <NavLink to="/ContactUsAdmin" onClick={closeDrawer}>
+                Admin Dashboard
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/addVegetableProduct" onClick={closeDrawer}>
+                AddVegetableProduct
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/products" onClick={closeDrawer}>
+                Products
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/adminDashboard" onClick={closeDrawer}>
+                Admin Dashboard
+              </NavLink>
+            </li>  
+          </>
+          :
           <li>
             <NavLink to="/login" onClick={closeDrawer}>
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/register" onClick={closeDrawer}>
-              Register
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/addVegetableProduct" onClick={closeDrawer}>
-              AddVegetableProduct
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/products" onClick={closeDrawer}>
-              Products
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/adminDashboard" onClick={closeDrawer}>
               Admin Dashboard
-            </NavLink>
+          </NavLink>
           </li>
+          } 
         </ul>
       </div>
     </div>
