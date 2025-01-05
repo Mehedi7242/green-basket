@@ -62,6 +62,7 @@ const Navbar = () => {
           </div>
           {/* User controls */}
           <div className="flex-none">
+            
             {/* Profile Dropdown */}
             <div
               className={`dropdown dropdown-end ${
@@ -81,7 +82,6 @@ const Navbar = () => {
                   />
                 </div>
               </div>
-              <h1>{user?.email}</h1>
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
@@ -101,6 +101,7 @@ const Navbar = () => {
                     <li>
                       <button onClick={handleLogOut}>Logout</button>
                     </li>
+                    <li><h1>{user?.email}</h1></li>
                   </>
                 ) : (
                   <>
