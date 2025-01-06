@@ -168,7 +168,7 @@ const Navbar = () => {
             <>
             <li>
               <NavLink to="/ContactUsAdmin" onClick={closeDrawer}>
-                Admin Dashboard
+                Admin Contact
               </NavLink>
             </li>
             <li>
