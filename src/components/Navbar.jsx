@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router";
 import { AuthContext } from './../provider/AuthProvider';
 import Swal from "sweetalert2";
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
@@ -62,7 +63,14 @@ const Navbar = () => {
           </div>
           {/* User controls */}
           <div className="flex-none">
-            
+            <div>
+              <Link to="/cartPage" className="btn btn-ghost btn-circle">
+                <div className="indicator">
+                  <FaShoppingCart size={24} />
+                  <span className="badge badge-sm indicator-item">3</span>
+                </div>
+              </Link>
+            </div>
             {/* Profile Dropdown */}
             <div
               className={`dropdown dropdown-end ${
@@ -92,9 +100,16 @@ const Navbar = () => {
                     <li>
                       <Link to="/userProfilePage" className="justify-between">
                         Profile
+                      </Link>
+                    </li>
+
+                    <li>
+                      <Link to="/order" className="justify-between">
+                        Orders
                         <span className="badge">New</span>
                       </Link>
                     </li>
+          
                     <li>
                       <a>Settings</a>
                     </li>
@@ -111,6 +126,7 @@ const Navbar = () => {
                     <li>
                       <NavLink to="/register">Register</NavLink>
                     </li>
+                    
                   </>
                 )}
               </ul>
@@ -128,6 +144,13 @@ const Navbar = () => {
               Home
             </NavLink>
           </li>
+
+          <li>
+            <NavLink to="/order" onClick={closeDrawer}>
+              Order
+            </NavLink>
+          </li>
+          
           <li>
             <NavLink to="/aboutUs" onClick={closeDrawer}>
               About Us

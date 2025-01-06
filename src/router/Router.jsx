@@ -16,6 +16,7 @@ import AdminDashboard from './../componentsAdmin/AdminDashboard';
 import AboutUs from "../components/AboutUs";
 import ComboSelector from "../components/ComboSelector";
 import UserProfilePage from "../components/UserProfilePage";
+import OrderPage from "../components/OrderPage";
 
 
 
@@ -25,7 +26,7 @@ const Router = () => {
       {/* Main layout with nested routes */}
       <Route path="/" element={<Layout />}>
         <Route index element={<App />} />
-        <Route path="cartPage" element={<CartItemPage />} />
+        
         <Route path="contactUs" element={<ContactUs />} /> 
         <Route path="aboutUs" element={<AboutUs />} />
         <Route path="userProfilePage" element={<UserProfilePage />} />
@@ -37,6 +38,8 @@ const Router = () => {
       <Route  element={<AuthPage />}>
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<Register />} />
+        <Route path="cartPage" element={<CartItemPage />} />
+        <Route path="order" element={<OrderPage />} />
         <Route path="contactUsAdmin" element={<ContactUsAdmin />} />
         <Route path="addVegetableProduct" element={<AddVegetableProduct />} />
         <Route path="products" element={<Products />} />
