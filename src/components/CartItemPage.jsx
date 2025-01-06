@@ -37,7 +37,7 @@ const CartItemPage = () => {
   // Fetch cart items from the API
   useEffect(() => {
     if (user?.email) {
-      fetch("http://localhost:5000/cart")
+      fetch("https://simple-curd-server-tau.vercel.app/cart")
         .then((res) => res.json())
         .then((data) => {
           const userCartItems = data.filter((item) => item.user === user.email);
@@ -96,7 +96,7 @@ const CartItemPage = () => {
     console.log("Checkout Data:", orderData);
   
     try {
-      const response = await fetch('http://localhost:5000/orders', {
+      const response = await fetch('https://simple-curd-server-tau.vercel.app/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ const CartItemPage = () => {
                 <div className="flex-1 ml-4">
                   <h2 className="text-lg font-semibold">{item.name}</h2>
                   <p className="text-sm text-gray-600">
-                    Price: ${item.price}
+                    Price: {item.price} tk
                   </p>
                 </div>
 
@@ -194,7 +194,7 @@ const CartItemPage = () => {
 
                 {/* Total Price for this item */}
                 <div className="text-lg font-semibold">
-                  ${(item.price * item.quantity).toFixed(2)}
+                  {(item.price * item.quantity).toFixed(2)} tk
                 </div>
               </div>
             ))}
@@ -305,7 +305,7 @@ const CartItemPage = () => {
           {/* Cart Summary */}
           <div className="mt-6 flex justify-between items-center border-t pt-4">
             <p className="text-xl font-semibold">
-              Total: ${totalAmount.toFixed(2)}
+              Total: {totalAmount.toFixed(2)} tk
             </p>
             <button
               className="btn btn-primary px-8 py-2"

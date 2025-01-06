@@ -19,7 +19,7 @@ const OrderPage = () => {
 
     const fetchOrderDetails = async () => {
       try {
-        const response = await fetch("http://localhost:5000/orders");
+        const response = await fetch("https://simple-curd-server-tau.vercel.app/orders");
         const data = await response.json();
 
         const userOrders = data.filter((order) => order.customer.email === user.email);
@@ -57,7 +57,7 @@ const OrderPage = () => {
             {/* Order Header */}
             <div className="flex justify-between items-center mb-6 border-b pb-4">
               <h2 className="text-2xl font-semibold text-gray-800">Order ID: {order._id}</h2>
-              <p className="text-lg text-green-600">Total: ${order.totalAmount}</p>
+              <p className="text-lg text-green-600">Total: {order.totalAmount} tk</p>
             </div>
 
             {/* Order Summary */}
@@ -84,7 +84,7 @@ const OrderPage = () => {
                 {order.cartItems.map((item) => (
                   <div key={item.id} className="flex justify-between items-center bg-gray-50 p-4 rounded-lg shadow-sm">
                     <p className="text-lg font-medium">{item.name} (x{item.quantity})</p>
-                    <p className="text-lg text-gray-600">${item.totalPrice}</p>
+                    <p className="text-lg text-gray-600">{item.totalPrice} tk</p>
                   </div>
                 ))}
               </div>

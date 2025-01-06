@@ -17,6 +17,7 @@ import AboutUs from "../components/AboutUs";
 import ComboSelector from "../components/ComboSelector";
 import UserProfilePage from "../components/UserProfilePage";
 import OrderPage from "../components/OrderPage";
+import Dashboard from "../componentsAdmin/Dashboard";
 
 
 
@@ -44,7 +45,7 @@ const Router = () => {
         <Route path="addVegetableProduct" element={<AddVegetableProduct />} />
         <Route path="products" element={<Products />} />
         <Route path="adminDashboard" element={<AdminDashboard />} />
-        
+        <Route path="dashboard" element={<Dashboard></Dashboard>} />
       </Route>
     </Routes>
   );

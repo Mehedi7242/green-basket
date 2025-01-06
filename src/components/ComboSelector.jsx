@@ -68,7 +68,7 @@ const GroceryComboSelector = () => {
 
     Swal.fire({
       title: "Cart Updated!",
-      text: `Your items have been added to the cart. Grand Total: $${grandTotal}`,
+      text: `Your items have been added to the cart. Grand Total: ${grandTotal} tk`,
       icon: "success",
       confirmButtonText: "OK",
       confirmButtonColor: "#6c9d47",
@@ -99,12 +99,12 @@ const GroceryComboSelector = () => {
             <ul className="list-disc list-inside text-gray-700 mb-4">
               {combo.items.map((item, index) => (
                 <li key={index}>
-                  {item.name} ({item.quantity}) - ${item.price.toFixed(2)}
+                  {item.name} ({item.quantity}) - {item.price.toFixed(2)} tk
                 </li>
               ))}
             </ul>
             <p className="text-lg font-bold text-gray-900 mb-4">
-              Total: ${calculateTotalPrice(combo).toFixed(2)}
+              Total: {calculateTotalPrice(combo).toFixed(2)} tk
             </p>
             <button
               onClick={() => handleAddCombo(combo.id)}
@@ -142,13 +142,13 @@ const GroceryComboSelector = () => {
               <ul className="list-disc list-inside text-gray-700 mb-4">
                 {combo.items.map((item, index) => (
                   <li key={index}>
-                    {item.name} ({item.quantity}) - ${item.price.toFixed(2)}
+                    {item.name} ({item.quantity}) - {item.price.toFixed(2)} tk
                   </li>
                 ))}
               </ul>
 
               <p className="text-lg font-semibold text-gray-900">
-                Combo Total: ${calculateTotalPrice(combo).toFixed(2)}
+                Combo Total: {calculateTotalPrice(combo).toFixed(2)} tk
               </p>
             </div>
           ))}
@@ -156,7 +156,7 @@ const GroceryComboSelector = () => {
           {/* Overall Total */}
           <div className="p-4 border rounded-lg shadow-md bg-green-50 flex flex-col items-center">
             <h2 className="text-lg font-bold text-green-700 mb-4">
-              Grand Total: $
+              Grand Total: 
               {selectedCombos
                 .reduce((total, combo) => total + calculateTotalPrice(combo), 0)
                 .toFixed(2)}

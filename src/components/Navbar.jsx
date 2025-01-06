@@ -183,9 +183,14 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink to="/adminDashboard" onClick={closeDrawer}>
-                Admin Dashboard
+                Product Dashboard
               </NavLink>
             </li>  
+            <li>
+              <NavLink to="/dashboard" onClick={closeDrawer}>
+                Order Dashboard
+              </NavLink>
+            </li>
           </>
           :
           <li>
@@ -193,6 +198,7 @@ const Navbar = () => {
               Admin Dashboard
           </NavLink>
           </li>
+          
           } 
         </ul>
       </div>
