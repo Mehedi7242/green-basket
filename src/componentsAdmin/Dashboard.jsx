@@ -19,7 +19,7 @@ const Dashboard = () => {
     // Fetch orders from the API
     const fetchOrders = async () => {
       try {
-        const response = await fetch("https://simple-curd-server-tau.vercel.app/orders");
+        const response = await fetch("http://localhost:5000/orders");
         const data = await response.json();
         setOrders(data);
         setLoading(false);

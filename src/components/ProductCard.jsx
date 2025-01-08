@@ -58,7 +58,7 @@ const ProductCard = ({ product }) => {
     };
 
     try {
-      const response = await fetch('https://simple-curd-server-tau.vercel.app/cart', {
+      const response = await fetch('http://localhost:5000/cart', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

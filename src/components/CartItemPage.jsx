@@ -37,7 +37,7 @@ const CartItemPage = () => {
   // Fetch cart items from the API
   useEffect(() => {
     if (user?.email) {
-      fetch("https://simple-curd-server-tau.vercel.app/cart")
+      fetch("http://localhost:5000/cart")
         .then((res) => res.json())
         .then((data) => {
           const userCartItems = data.filter((item) => item.user === user.email);
@@ -96,7 +96,7 @@ const CartItemPage = () => {
     console.log("Checkout Data:", orderData);
   
     try {
-      const response = await fetch('https://simple-curd-server-tau.vercel.app/orders', {
+      const response = await fetch('http://localhost:5000/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

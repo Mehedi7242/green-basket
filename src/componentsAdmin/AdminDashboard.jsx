@@ -11,7 +11,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://simple-curd-server-tau.vercel.app/products");
+        const response = await fetch("http://localhost:5000/products");
         if (!response.ok) {
           throw new Error("Failed to fetch data");
         }
@@ -28,7 +28,7 @@ const AdminDashboard = () => {
   // Handle delete product
   const handleDeleteProduct = async (id) => {
     try {
-      const response = await fetch(`https://simple-curd-server-tau.vercel.app/products/${id}`, {
+      const response = await fetch(`http://localhost:5000/products/${id}`, {
         method: "DELETE",
       });
 
