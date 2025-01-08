@@ -18,6 +18,8 @@ import ComboSelector from "../components/ComboSelector";
 import UserProfilePage from "../components/UserProfilePage";
 import OrderPage from "../components/OrderPage";
 import Dashboard from "../componentsAdmin/Dashboard";
+import RockPaperScissors from "../games/RockPaperScissors";
+import VegetableTriviaGame from "../games/VegetableTriviaGame";
 
 
 
@@ -32,6 +34,8 @@ const Router = () => {
         <Route path="aboutUs" element={<AboutUs />} />
         <Route path="userProfilePage" element={<UserProfilePage />} />
         <Route path="comboSelector " element={<ComboSelector />} />
+        <Route path="RockPaperScissors" element={<RockPaperScissors />} />
+        <Route path="VegetableTriviaGame" element={<VegetableTriviaGame />} />
         <Route path="*" element={<h2>Error: Page Not Found</h2>} />
         
       </Route>

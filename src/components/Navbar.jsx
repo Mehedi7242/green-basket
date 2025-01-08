@@ -4,6 +4,7 @@ import { AuthContext } from './../provider/AuthProvider';
 import Swal from "sweetalert2";
 import { FaShoppingCart } from 'react-icons/fa';
 
+
 const Navbar = () => {
   const { user, signOutUser } = useContext(AuthContext);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -150,7 +151,6 @@ const Navbar = () => {
               Order
             </NavLink>
           </li>
-          
           <li>
             <NavLink to="/aboutUs" onClick={closeDrawer}>
               About Us
@@ -161,6 +161,12 @@ const Navbar = () => {
               Contact
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/RockPaperScissors" onClick={closeDrawer}>
+              RockPaperScissors
+            </NavLink>
+          </li>
+          
 
           {
             user ?

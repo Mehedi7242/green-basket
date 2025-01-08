@@ -1,3 +1,4 @@
+import RockPaperScissors from "../games/RockPaperScissors";
 
 const Footer = () => {
     return (

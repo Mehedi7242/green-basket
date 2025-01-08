@@ -1,4 +1,5 @@
 import React from "react";
+import Chatbot from "./Chatbot";
 
 const AboutUs = () => {
   return (
@@ -72,6 +73,7 @@ const AboutUs = () => {
             ensure the success of our mission.
           </p>
         </section>
+        <Chatbot></Chatbot>
 
         {/* Call to Action */}
         <section className="text-center mt-8">
@@ -82,6 +84,7 @@ const AboutUs = () => {
             Explore our fresh produce, subscribe to our service, and be part of
             the sustainable food movement.
           </p>
+          
           <a
             href="/"
             className="bg-green-600 hover:bg-green-700 text-white py-2 px-6 rounded-md shadow-md font-medium"
