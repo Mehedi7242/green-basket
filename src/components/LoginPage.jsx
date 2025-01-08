@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { easeInOut, motion } from 'framer-motion';
 import GoogleBtn from './GoogleBtn';
 import { AuthContext } from './../provider/AuthProvider';
+
 const LoginPage = () => {
     const navigate = useNavigate()
     const {signInUser} = useContext(AuthContext)

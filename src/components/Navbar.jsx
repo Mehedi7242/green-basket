@@ -162,6 +162,11 @@ const Navbar = () => {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/CustomerService" onClick={closeDrawer}>
+            CustomerService
+            </NavLink>
+          </li>
+          <li>
             <NavLink to="/RockPaperScissors" onClick={closeDrawer}>
               RockPaperScissors
             </NavLink>
