@@ -165,19 +165,9 @@ const Navbar = () => {
             CustomerService
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/CustomerFeedback" onClick={closeDrawer}>
-            CustomerFeedback
-            </NavLink>
-          </li>
           
-          <li>
-            <NavLink to="/RockPaperScissors" onClick={closeDrawer}>
-              RockPaperScissors
-            </NavLink>
-          </li>
           
-
+          
           {
             user ?
             
@@ -207,7 +197,18 @@ const Navbar = () => {
                 Order Dashboard
               </NavLink>
             </li>
+            <li>
+            <NavLink to="/CustomerFeedback" onClick={closeDrawer}>
+            CustomerFeedback
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/OrderManagement" onClick={closeDrawer}>
+              OrderManagement
+            </NavLink>
+          </li>
           </>
+          
           :
           <li>
             <NavLink to="/login" onClick={closeDrawer}>

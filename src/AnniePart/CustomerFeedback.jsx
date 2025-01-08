@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+
 import swal from "sweetalert";
+import Footer from './../components/Footer';
 const CustomerFeedback = () => {
   const [feedbackData, setFeedbackData] = useState([]);
   const [repliedRows, setRepliedRows] = useState([]);
@@ -26,7 +28,8 @@ const CustomerFeedback = () => {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <>
+      <div className="bg-gray-100 ">
       <header className="bg-green-700 text-white text-center py-4">
         <h1 className="text-2xl font-bold">Customer Feedback</h1>
       </header>
@@ -81,6 +84,9 @@ const CustomerFeedback = () => {
         </button>
       </div>
     </div>
+   
+    </>
+    
   );
 };
 

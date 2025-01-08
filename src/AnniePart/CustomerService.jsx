@@ -14,7 +14,7 @@ const {signOutUser, user} = useContext(AuthContext);
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 ">
       {/* Header */}
       <header className="bg-green-700 text-white py-4">
         <div className="container mx-auto flex justify-between items-center px-4">
@@ -79,11 +79,6 @@ const {signOutUser, user} = useContext(AuthContext);
         {/* Feedback Section */}
         <FeedBackForm></FeedBackForm>
       </main>
-
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white text-center py-4">
-        <p>Contact Support | Terms of Service | Privacy Policy</p>
-      </footer>
     </div>
   );
 };
